@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Action — Participant Guide | ATD South Carolina | June 5</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #0E7C7B;
+    --teal-light: #13A5A4;
+    --gold: #E8A317;
+    --gold-light: #F5C84A;
+    --slate: #2C3E50;
+    --mist: #E8F4F4;
+    --cream: #FAFAF7;
+    --white: #FFFFFF;
+    --text-dark: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --beginner: #2E7D32;
+    --beginner-bg: #E8F5E9;
+    --intermediate: #1565C0;
+    --intermediate-bg: #E3F2FD;
+    --inperson: #5B2D8E;
+    --inperson-bg: #F3E5F5;
+    --online: #BF360C;
+    --online-bg: #FBE9E7;
+    --pace-p: #0E7C7B;
+    --pace-a: #E8A317;
+    --pace-c: #5B2D8E;
+    --pace-e: #C62828;
+    --border: rgba(14,124,123,0.15);
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --participant-accent: #0E7C7B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── TOP HEADER ─────────────────────────────────────────── */
+  .site-header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    border-bottom: 3px solid var(--participant-accent);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-brand { display: flex; flex-direction: column; }
+
+  .header-brand .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--teal-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-brand .title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .header-brand .subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  .audience-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 6px;
+  }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 50%, #1a3a4a 100%);
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(14,124,123,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,163,23,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--gold); font-style: italic; }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 24px 0 0;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+  }
+
+  .hero-meta-item .icon {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  /* ── PACE BAR ───────────────────────────────────────────── */
+  .pace-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+  }
+
+  .pace-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .pace-item {
+    flex: 1;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .pace-item:last-child { border-right: none; }
+  .pace-item:hover { background: var(--mist); }
+
+  .pace-letter { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 700; line-height: 1; flex-shrink: 0; width: 36px; text-align: center; }
+  .pace-content .word { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; }
+  .pace-content .definition { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ── MAIN LAYOUT ────────────────────────────────────────── */
+  .main-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* ── NAV TABS ───────────────────────────────────────────── */
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .nav-tab {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .nav-tab:hover { color: var(--teal); background: var(--mist); }
+  .nav-tab.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 600; }
+
+  /* ── SECTIONS ───────────────────────────────────────────── */
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.visible { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── PARTICIPANT CARDS ──────────────────────────────────── */
+  .participant-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .participant-card h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .participant-card .module-tag { font-size: 11px; color: var(--teal); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; display: block; }
+  .participant-card p { font-size: 14px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.7; }
+
+  /* ── CHECKLIST ──────────────────────────────────────────── */
+  .obj-list { list-style: none; padding: 0; margin-bottom: 20px; }
+  .obj-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text-dark); padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .obj-list li:last-child { border-bottom: none; }
+
+  .obj-check {
+    width: 20px; height: 20px;
+    border: 2px solid var(--teal);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── WORKSPACE ──────────────────────────────────────────── */
+  .workspace {
+    background: var(--mist);
+    border: 1px dashed var(--teal-light);
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 80px;
+    margin-top: 12px;
+  }
+
+  .workspace p { color: var(--text-light) !important; font-style: italic; font-size: 13px !important; }
+
+  /* ── SECTION LABELS ─────────────────────────────────────── */
+  .block-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .block-label-text { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); }
+  .block-label-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── CALLOUT BOXES ──────────────────────────────────────── */
+  .callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+  @media (max-width: 700px) { .callout-grid { grid-template-columns: 1fr; } }
+
+  .callout-box { border-radius: 12px; padding: 18px 20px; border: 1px solid transparent; }
+  .callout-box .callout-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .callout-box .callout-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .callout-box .callout-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .callout-box p { font-size: 13px; line-height: 1.6; }
+
+  .callout-beginner { background: var(--beginner-bg); border-color: rgba(46,125,50,0.25); }
+  .callout-beginner .callout-title { color: var(--beginner); }
+  .callout-beginner .callout-icon { background: rgba(46,125,50,0.12); }
+
+  .callout-intermediate { background: var(--intermediate-bg); border-color: rgba(21,101,192,0.25); }
+  .callout-intermediate .callout-title { color: var(--intermediate); }
+  .callout-intermediate .callout-icon { background: rgba(21,101,192,0.12); }
+
+  /* ── OVERVIEW CARDS ─────────────────────────────────────── */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 36px; }
+
+  .overview-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .overview-card .oc-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+  .overview-card h3 { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--navy); margin-bottom: 8px; }
+  .overview-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── TIMELINE ───────────────────────────────────────────── */
+  .timeline {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 32px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    margin-bottom: 36px;
+  }
+
+  .timeline h3 { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 20px; color: var(--navy); }
+
+  .tl-row { display: flex; gap: 16px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-time { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--teal); min-width: 70px; font-weight: 600; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); margin-top: 4px; flex-shrink: 0; }
+  .tl-content .tl-title { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .tl-content .tl-desc { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+
+  /* ── ESCAPE ROOM + PADLET CARDS ─────────────────────────── */
+  .activity-link-box {
+    background: var(--white);
+    border: 2px solid var(--teal);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .activity-link-box .alb-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+
+  .activity-link-box .alb-content h4 { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); margin-bottom: 6px; }
+  .activity-link-box .alb-content p { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+
+  .activity-link-box a.alb-btn {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .activity-link-box a.alb-btn:hover { background: var(--teal-light); }
+
+  /* ── RESOURCES ──────────────────────────────────────────── */
+  .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 28px; }
+
+  .resource-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .resource-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .resource-card code { display: block; background: var(--navy); color: var(--teal-light); font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 14px 16px; border-radius: 8px; line-height: 1.7; white-space: pre-wrap; margin-top: 8px; }
+
+  /* ── PACE FRAMEWORK CARD ────────────────────────────────── */
+  .pace-full {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .pace-full h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 24px; color: var(--gold); }
+  .pace-rows { display: flex; flex-direction: column; gap: 16px; }
+
+  .pace-row { display: flex; gap: 20px; align-items: flex-start; background: rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 22px; }
+  .pace-row-letter { font-family: 'DM Serif Display', serif; font-size: 36px; line-height: 1; width: 40px; flex-shrink: 0; text-align: center; }
+  .pace-row-content h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .pace-row-content p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+  /* ── UTILITY ────────────────────────────────────────────── */
+  h2.section-heading { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 24px; }
+  p.section-intro { font-size: 15px; color: var(--text-mid); margin-bottom: 28px; max-width: 700px; line-height: 1.7; }
+
+  @media print {
+    .site-header, .nav-tabs { display: none; }
+    .section { display: block !important; }
+    .participant-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ STICKY HEADER ══════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="label">ATD South Carolina</span>
+      <span class="title">AI in Action — Participant Guide</span>
+      <span class="subtitle">June 5 · 80 Minutes · Hybrid (Teams)</span>
+    </div>
+    <div class="audience-badge">📋 Participant Guide</div>
+  </div>
+</header>
+
+<!-- ══════════════════ HERO ════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">📋 Participant Guide · June 5</span>
+    <h1>AI in Action:<br><span>Building Learning Assets</span><br>with Microsoft CoPilot</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="icon">⏱</div> 80 Minutes</div>
+      <div class="hero-meta-item"><div class="icon">🔀</div> Hybrid · Microsoft Teams</div>
+      <div class="hero-meta-item"><div class="icon">👥</div> Mixed (Beginner–Intermediate)</div>
+      <div class="hero-meta-item"><div class="icon">🛠</div> Hands-On · Proof of Concept</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PACE FRAMEWORK BAR ═════════════════ -->
+<div class="pace-bar">
+  <div class="pace-bar-inner">
+    <div class="pace-item">
+      <div class="pace-letter" style="color:var(--pace-p)">P</div>
+      <div class="pace-content">
+        <span class="word" style="color:var(--pace-p)">Purpose</span>
+        <span class="definition">Define the learning need &amp; govern AI use responsibly</span>
+      </div>
+    </div>
+    <div class="pace-item">
+      <div class="pace-letter" style="color:var(--pace-a)">A</div>
+      <div class="pace-content">
+        <span class="word" style="color:var(--pace-a)">Augment</span>
+        <span class="definition">Use AI to generate &amp; enhance assets</span>
+      </div>
+    </div>
+    <div class="pace-item">
+      <div class="pace-letter" style="color:var(--pace-c)">C</div>
+      <div class="pace-content">
+        <span class="word" style="color:var(--pace-c)">Curate</span>
+        <span class="definition">Human review, refine, and iterate on AI output</span>
+      </div>
+    </div>
+    <div class="pace-item">
+      <div class="pace-letter" style="color:var(--pace-e)">E</div>
+      <div class="pace-content">
+        <span class="word" style="color:var(--pace-e)">Embed</span>
+        <span class="definition">Integrate AI into your design workflow</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ MAIN ════════════════════════════════ -->
+<div class="main-wrap">
+
+  <!-- ── NAV TABS ─────────────────────────────────────────── -->
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('overview', this)">Overview</button>
+    <button class="nav-tab" onclick="showTab('module1', this)">Module 1</button>
+    <button class="nav-tab" onclick="showTab('module2', this)">Module 2</button>
+    <button class="nav-tab" onclick="showTab('module3', this)">Module 3</button>
+    <button class="nav-tab" onclick="showTab('wrapup', this)">Wrap-Up</button>
+    <button class="nav-tab" onclick="showTab('resources', this)">Resources</button>
+  </div>
+
+  <!-- ──────── OVERVIEW ──────────────────────────────────── -->
+  <div id="tab-overview" class="section visible">
+    <h2 class="section-heading">Welcome to AI in Action</h2>
+    <p class="section-intro">Today you'll build real AI-assisted learning assets using Microsoft CoPilot — and leave with a proof of concept and a framework you can use immediately. No prior AI experience required.</p>
+
+    <!-- Escape Room -->
+    <div class="activity-link-box">
+      <div class="alb-icon">🔐</div>
+      <div class="alb-content">
+        <h4>Opening Activity — ATD SC Escape Room</h4>
+        <p>Kick off the session with a quick escape room challenge! The link will be shared in the MS Teams chat. In-person participants, work with your table. Virtual participants, play along and share your reactions on Padlet.</p>
+        <a href="https://kmcclure76.github.io/ATD-SC-80yrs/" target="_blank" class="alb-btn">🔐 Launch Escape Room</a>
+      </div>
+    </div>
+
+    <!-- Padlet -->
+    <div class="activity-link-box">
+      <div class="alb-icon">📌</div>
+      <div class="alb-content">
+        <h4>Padlet — Our Shared Collaboration Space</h4>
+        <p>Throughout today's session, use Padlet to share your work, reflections, and 30-day commitments with the whole group — whether you're in the room or joining virtually. The link will also be in the Teams chat.</p>
+        <a href="https://padlet.com/kmcclure76/atd-sc-80th-year-celebration-g9zkafwndiyn1xvk" target="_blank" class="alb-btn">📌 Open Padlet</a>
+      </div>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <span class="oc-icon">🎯</span>
+        <h3>What You'll Do</h3>
+        <p>Create a visual learning asset. Draft a written learning asset. Combine them into a proof of concept. Build your personal PACE workflow.</p>
+      </div>
+      <div class="overview-card">
+        <span class="oc-icon">🛠</span>
+        <h3>Tools You'll Use</h3>
+        <p>Open <strong>Microsoft CoPilot</strong> and your <strong>Microsoft 365</strong> apps (Word, PowerPoint). Use your organizational account — everything you need is already available.</p>
+      </div>
+      <div class="overview-card">
+        <span class="oc-icon">📦</span>
+        <h3>What You'll Leave With</h3>
+        <p>A completed learning asset, the PACE framework reference, a prompt template library, and a 30-day action commitment.</p>
+      </div>
+      <div class="overview-card">
+        <span class="oc-icon">🔑</span>
+        <h3>The RTCF Prompt Formula</h3>
+        <p><strong>R</strong>ole + <strong>T</strong>ask + <strong>C</strong>ontext + <strong>F</strong>ormat = a prompt that gets results.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <h3>Today's Agenda</h3>
+      <div class="tl-row"><span class="tl-time">0–5 min</span><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Welcome, Escape Room &amp; PACE Framework Intro</div></div></div>
+      <div class="tl-row"><span class="tl-time">5–27 min</span><div class="tl-dot" style="background:var(--pace-p)"></div><div class="tl-content"><div class="tl-title">Module 1 — AI Governance &amp; Visual Assets</div><div class="tl-desc">PACE: Purpose · Facilitator A</div></div></div>
+      <div class="tl-row"><span class="tl-time">27–49 min</span><div class="tl-dot" style="background:var(--pace-a)"></div><div class="tl-content"><div class="tl-title">Module 2 — AI Integration &amp; Written Assets</div><div class="tl-desc">PACE: Augment · Facilitator B</div></div></div>
+      <div class="tl-row"><span class="tl-time">49–71 min</span><div class="tl-dot" style="background:var(--pace-c)"></div><div class="tl-content"><div class="tl-title">Module 3 — Proof of Concept &amp; Human Review</div><div class="tl-desc">PACE: Curate + Embed · Facilitator C</div></div></div>
+      <div class="tl-row"><span class="tl-time">71–80 min</span><div class="tl-dot" style="background:var(--navy)"></div><div class="tl-content"><div class="tl-title">Wrap-Up, Action Commitment &amp; Q&amp;A</div></div></div>
+    </div>
+  </div>
+
+  <!-- ──────── MODULE 1 ───────────────────────────────────── -->
+  <div id="tab-module1" class="section">
+    <div class="participant-card">
+      <span class="module-tag">Module 1 · PACE: Purpose</span>
+      <h3>Set the Stage — AI Governance &amp; Visual Assets</h3>
+      <p>In this module you'll learn foundational AI governance principles, get oriented to Microsoft CoPilot, and build your first AI-assisted visual asset concept.</p>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Key Takeaways</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div>AI governance means using AI responsibly within your organization's framework — you are always the final author.</li>
+        <li><div class="obj-check"></div>What you put in is what you get out — specificity in prompts drives quality.</li>
+        <li><div class="obj-check"></div>The RTCF formula: Role · Task · Context · Format.</li>
+      </ul>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Your Activity</div><div class="block-label-line"></div></div>
+      <p>Use Microsoft CoPilot to generate a design brief for a visual learning asset. Then open PowerPoint and start building from CoPilot's output.</p>
+      <div class="callout-grid" style="margin-top:14px;">
+        <div class="callout-box callout-beginner">
+          <div class="callout-header"><div class="callout-icon">🟢</div><div class="callout-title">Beginner Prompt Template</div></div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;">"You are a learning designer. Create a visual learning asset concept for a [TOPIC] training aimed at [AUDIENCE]. Describe the layout, key visual elements, colors, and icons to use. Format it as a design brief I can use in PowerPoint."</p>
+        </div>
+        <div class="callout-box callout-intermediate">
+          <div class="callout-header"><div class="callout-icon">🔵</div><div class="callout-title">Intermediate Challenge</div></div>
+          <p>Build your own RTCF prompt. Iterate at least twice. Compare outputs and note what changed and why.</p>
+        </div>
+      </div>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Reflection Space</div><div class="block-label-line"></div></div>
+      <div class="workspace"><p>Notes: What surprised you about the output? What would you change in your next prompt?</p></div>
+    </div>
+  </div>
+
+  <!-- ──────── MODULE 2 ───────────────────────────────────── -->
+  <div id="tab-module2" class="section">
+    <div class="participant-card">
+      <span class="module-tag">Module 2 · PACE: Augment</span>
+      <h3>Build the Asset — AI Integration &amp; Written Assets</h3>
+      <p>In this module you'll use CoPilot and Microsoft 365 together as an integrated workflow and draft one written learning asset of your choice.</p>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Key Takeaways</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div>CoPilot writes and structures; Microsoft 365 (Word/PowerPoint) designs and publishes — together they're powerful.</li>
+        <li><div class="obj-check"></div>Different asset types need different prompt structures — context is everything.</li>
+        <li><div class="obj-check"></div>Iteration is design, not failure.</li>
+      </ul>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Choose Your Asset</div><div class="block-label-line"></div></div>
+      <div class="callout-grid">
+        <div class="callout-box callout-beginner">
+          <div class="callout-header"><div class="callout-icon">🟢</div><div class="callout-title">Beginner Templates</div></div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.8;"><strong>Facilitator Guide:</strong> "Write a 2-minute facilitator guide intro for a [TOPIC] session for [AUDIENCE]. Include a welcome, session goal, and warm-up question."<br><br><strong>Video Script:</strong> "Write a 90-second video script about [TOPIC] for [AUDIENCE]. Include an opening, 3 key points, and a call to action."</p>
+        </div>
+        <div class="callout-box callout-intermediate">
+          <div class="callout-header"><div class="callout-icon">🔵</div><div class="callout-title">Intermediate Challenge</div></div>
+          <p>Write your own RTCF prompt. Run it. Identify one gap. Add a refinement line. Regenerate. Compare versions 1 and 2.</p>
+        </div>
+      </div>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Self-Assessment</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div>Accuracy — Is this factually correct for my context?</li>
+        <li><div class="obj-check"></div>Alignment — Does it achieve my learning objective?</li>
+        <li><div class="obj-check"></div>Voice — Does it sound like my organization?</li>
+      </ul>
+      <div class="workspace"><p>Notes: What would you change about your prompt next time?</p></div>
+    </div>
+  </div>
+
+  <!-- ──────── MODULE 3 ───────────────────────────────────── -->
+  <div id="tab-module3" class="section">
+    <div class="participant-card">
+      <span class="module-tag">Module 3 · PACE: Curate + Embed</span>
+      <h3>Proof of Concept — Human Review &amp; Workflow Integration</h3>
+      <p>In this module you'll apply a human review process, combine your assets into a proof of concept, and map PACE to your own design workflow.</p>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Human Review Checklist</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div>Factual accuracy verified</li>
+        <li><div class="obj-check"></div>Aligned to learning objective</li>
+        <li><div class="obj-check"></div>Reflects organizational voice</li>
+        <li><div class="obj-check"></div>No sensitive or inappropriate content</li>
+        <li><div class="obj-check"></div>Accessible and inclusive language</li>
+        <li><div class="obj-check"></div>Meets your org's AI disclosure policy</li>
+      </ul>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">My PACE Framework Card</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div><strong>P — Purpose:</strong> My learning need is ___</li>
+        <li><div class="obj-check"></div><strong>A — Augment:</strong> I will use CoPilot for ___ and Microsoft 365 for ___</li>
+        <li><div class="obj-check"></div><strong>C — Curate:</strong> My review process will include ___</li>
+        <li><div class="obj-check"></div><strong>E — Embed:</strong> This asset will live in ___ in my workflow</li>
+      </ul>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">My Proof of Concept Statement</div><div class="block-label-line"></div></div>
+      <div class="workspace"><p>"With AI, I built ___. I can use this for ___ at work."</p></div>
+    </div>
+  </div>
+
+  <!-- ──────── WRAP-UP ─────────────────────────────────────── -->
+  <div id="tab-wrapup" class="section">
+    <div class="participant-card">
+      <span class="module-tag">Wrap-Up · Action Commitment</span>
+      <h3>Your 30-Day AI Commitment</h3>
+      <p>You now have the PACE framework, a proof of concept, and a library of prompt templates. The next step is yours.</p>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">My Commitment</div><div class="block-label-line"></div></div>
+      <div class="workspace"><p>"In the next 30 days, I will use the PACE framework to build ___ for ___."</p></div>
+      <div class="block-label" style="margin-top:20px;"><div class="block-label-text">Resources to Take Home</div><div class="block-label-line"></div></div>
+      <ul class="obj-list">
+        <li><div class="obj-check"></div>Microsoft CoPilot — your AI writing and thinking partner, available in Microsoft 365</li>
+        <li><div class="obj-check"></div>PACE Framework card (see Resources tab)</li>
+        <li><div class="obj-check"></div>RTCF Prompt templates (see Resources tab)</li>
+        <li><div class="obj-check"></div>Human Review Checklist</li>
+        <li><div class="obj-check"></div>Padlet — stay connected with the group: <a href="https://padlet.com/kmcclure76/atd-sc-80th-year-celebration-g9zkafwndiyn1xvk" target="_blank" style="color:var(--teal);font-weight:600;">Open Padlet</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ──────── RESOURCES ──────────────────────────────────── -->
+  <div id="tab-resources" class="section">
+    <h2 class="section-heading">Your Take-Home Resources</h2>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <h4>🖼 Visual Asset Prompt</h4>
+        <code>You are an instructional designer and visual design consultant. Create a design brief for a [ASSET TYPE] on [TOPIC]. Audience: [AUDIENCE]. Tone: [TONE]. Include: layout, color palette, typography, key icons, headline text. Format for Microsoft PowerPoint.</code>
+      </div>
+      <div class="resource-card">
+        <h4>📄 Facilitator Guide Prompt</h4>
+        <code>You are an instructional designer. Write a facilitator guide intro for a [DURATION]-minute session on [TOPIC] for [AUDIENCE]. Include: welcome, 3 session goals, warm-up question, timing guidance. Tone: professional and encouraging.</code>
+      </div>
+      <div class="resource-card">
+        <h4>🎙 Podcast Script Prompt</h4>
+        <code>You are a podcast producer for a professional development series. Write a 90-second intro script for "[EPISODE TITLE]." Host: [DESCRIPTION]. Audience: [AUDIENCE]. Start with a hook. End with a preview. Tone: [TONE].</code>
+      </div>
+      <div class="resource-card">
+        <h4>🎬 Video Script Prompt</h4>
+        <code>Write a [DURATION]-second video script on [TOPIC] for [AUDIENCE]. Scene 1: hook/problem (15s). Scene 2: key insight (30s). Scene 3: example (25s). Scene 4: call to action (10s). Tone: [TONE].</code>
+      </div>
+    </div>
+
+    <div class="pace-full">
+      <h3>The PACE Framework — Your Reference Card</h3>
+      <div class="pace-rows">
+        <div class="pace-row"><div class="pace-row-letter" style="color:var(--pace-p)">P</div><div class="pace-row-content"><h4 style="color:var(--gold-light)">Purpose</h4><p>Define the learning need. Apply governance. Ask: Is AI right for this asset? Am I working within my organization's approved tools and guidelines?</p></div></div>
+        <div class="pace-row"><div class="pace-row-letter" style="color:var(--pace-a)">A</div><div class="pace-row-content"><h4 style="color:var(--gold-light)">Augment</h4><p>Prompt with RTCF. Iterate. Use CoPilot for content, Microsoft 365 for design and publishing. What you put in is what you get out.</p></div></div>
+        <div class="pace-row"><div class="pace-row-letter" style="color:var(--pace-c)">C</div><div class="pace-row-content"><h4 style="color:var(--gold-light)">Curate</h4><p>Human review always. Check accuracy, alignment, tone, inclusion. You are the author.</p></div></div>
+        <div class="pace-row"><div class="pace-row-letter" style="color:var(--pace-e)">E</div><div class="pace-row-content"><h4 style="color:var(--gold-light)">Embed</h4><p>Map to your ADDIE/SAM workflow. Build reusable templates. Scale across your team.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-wrap -->
+
+<script>
+  const tabs = ['tab-overview','tab-module1','tab-module2','tab-module3','tab-wrapup','tab-resources'];
+
+  function showTab(name, btn) {
+    const tabMap = { overview:0, module1:1, module2:2, module3:3, wrapup:4, resources:5 };
+    const idx = tabMap[name];
+    tabs.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('visible', i === idx);
+    });
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
